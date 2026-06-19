@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetClinic SaaS - Interactive Showcase | Santiago Diestro Gallego</title>
+    <meta name="description" content="Showcase interactivo de PetClinic SaaS, una aplicación de gestión veterinaria modernizada con React, Spring Boot, Docker e ITSM. Creado por Santiago Diestro Gallego.">
+    <!-- Google Fonts: Outfit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+
+    <!-- Header Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <i class="fa-solid fa-paw logo-icon"></i>
+                <span>PetClinic <span class="text-accent">SaaS</span></span>
+            </a>
+            <nav class="nav-menu">
+                <a href="#about" class="nav-link">Contribución</a>
+                <a href="#tech" class="nav-link">Tecnologías</a>
+                <a href="#simulator" class="nav-link btn-nav-sim">Iniciar Simulador</a>
+                <a href="#architecture" class="nav-link">Arquitectura</a>
+                <a href="#devops" class="nav-link">DevOps & QA</a>
+            </nav>
+            <div class="nav-socials">
+                <a href="https://github.com/SantiiDG" target="_blank" class="social-icon" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="mailto:santi18diestro@gmail.com" class="social-icon" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="badge-container">
+                    <span class="badge-glow"><i class="fa-solid fa-code-fork"></i> Proyecto de Ingeniería del Software</span>
+                    <span class="badge-glow success"><i class="fa-solid fa-lock"></i> Código Cerrado / Académico</span>
+                </div>
+                <h1 class="hero-title">
+                    PetClinic <span class="text-gradient">SaaS Platform</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Descubre una solución integral de gestión veterinaria con arquitectura SPA (React + Spring Boot), control de acceso JWT, integraciones en la nube y metodología ITSM (SLA) rigurosa. Explora sus funcionalidades mediante este simulador interactivo de código libre.
+                </p>
+                <div class="hero-ctas">
+                    <a href="#simulator" class="btn btn-primary"><i class="fa-solid fa-gamepad"></i> Probar Simulador Web</a>
+                    <a href="https://github.com/SantiiDG" target="_blank" class="btn btn-secondary"><i class="fa-brands fa-github"></i> Visitar Mi GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Santiago's Role Section -->
+        <section id="about" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Mi Contribución al Proyecto</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-card role-card">
+                    <div class="card-glow"></div>
+                    <div class="role-header">
+                        <div class="role-avatar">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <div>
+                            <h3>Santiago Diestro Gallego</h3>
+                            <p class="text-accent">Fullstack Developer & SLA Analyst</p>
+                        </div>
+                    </div>
+                    <p class="role-desc">
+                        Como miembro activo del equipo de desarrollo, mi foco principal estuvo en diseñar interfaces interactivas intuitivas y eficientes para el frontend de la plataforma React, garantizar la integridad de las integraciones externas (APIs de terceros) y liderar el modelado, análisis y monitorización del Acuerdo de Nivel de Servicio (SLA) e incidencias del proyecto.
+                    </p>
+                    <div class="role-stats">
+                        <div class="stat-item">
+                            <span class="stat-num">36</span>
+                            <span class="stat-label">Commits</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num">60+h</span>
+                            <span class="stat-label">Trabajo (Clockify)</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num">100%</span>
+                            <span class="stat-label">SLA Cumplido</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-card features-highlight">
+                    <div class="card-glow"></div>
+                    <h3>Responsabilidades Clave Desempeñadas</h3>
+                    <ul class="highlight-list">
+                        <li>
+                            <i class="fa-solid fa-circle-check text-success"></i>
+                            <div>
+                                <strong>Desarrollo Frontend & UI/UX:</strong> Implementación y estilización de componentes del sistema PetClinic, optimizando las vistas de dueños de mascotas y reservas.
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check text-success"></i>
+                            <div>
+                                <strong>Modelado y Redacción del Customer Agreement:</strong> Diseño de términos comerciales del SaaS, matrices de priorización de soporte e integración del framework SPACE.
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check text-success"></i>
+                            <div>
+                                <strong>Gestión e Monitorización SLA (ITSM):</strong> Análisis crítico y seguimiento formal en iTop y ZenHub de tickets críticos (TTO y TTR), optimizando los tiempos de resolución.
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check text-success"></i>
+                            <div>
+                                <strong>Integración e APIs:</strong> Colaboración en el consumo seguro de APIs externas para features extendidas ("Buscador Felino").
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Section -->
+        <section id="tech" class="section">
+            <div class="section-header">
+                <h2 class="section-title">El Ecosistema Tecnológico</h2>
+                <p class="section-subtitle">Arquitectura moderna orientada a servicios, gestión ágil y entrega de alta calidad</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <i class="fa-brands fa-react tech-icon text-react"></i>
+                    <h4>React 18</h4>
+                    <p>Frontend modular SPA con React Router, hooks personalizados y consumo de API asíncrono.</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fa-brands fa-envira tech-icon text-spring"></i>
+                    <h4>Spring Boot 3</h4>
+                    <p>Backend robusto en Java con arquitectura REST, JPA/Hibernate, Maven y seguridad JWT.</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fa-solid fa-key tech-icon text-jwt"></i>
+                    <h4>JSON Web Tokens</h4>
+                    <p>Seguridad y control de acceso basado en roles (ADMIN, OWNER, VET, CLINIC_OWNER).</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fa-solid fa-database tech-icon text-db"></i>
+                    <h4>PostgreSQL / H2</h4>
+                    <p>Base de datos relacional con persistencia optimizada y base de datos H2 en memoria para tests.</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fa-brands fa-docker tech-icon text-docker"></i>
+                    <h4>Docker</h4>
+                    <p>Contenedores e imágenes para simplificar el despliegue del entorno y bases de datos locales.</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fa-solid fa-shield-halved tech-icon text-sonar"></i>
+                    <h4>SonarQube</h4>
+                    <p>Análisis de código estático continuo para asegurar calidad de software, bugs 0 y alta cobertura.</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fa-solid fa-diagram-project tech-icon text-zenhub"></i>
+                    <h4>ZenHub & Scrum</h4>
+                    <p>Planificación de Sprints con estimación en Story Points, tableros Kanban y Burndowns continuos.</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fa-solid fa-ticket tech-icon text-itop"></i>
+                    <h4>iTop (ITSM)</h4>
+                    <p>Gestión y monitorización de incidencias, peticiones de servicio y Acuerdos de Nivel de Servicio (SLA).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Simulator Section -->
+        <section id="simulator" class="section section-simulator">
+            <div class="section-header">
+                <h2 class="section-title">Simulador Interactivo de la Aplicación</h2>
+                <p class="section-subtitle">Experimenta el flujo de la plataforma y sus principales módulos en tiempo real</p>
+                <div class="section-divider"></div>
+            </div>
+
+            <!-- Simulator App Frame -->
+            <div class="app-frame">
+                <div class="app-header-bar">
+                    <div class="header-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="header-address">
+                        <i class="fa-solid fa-lock text-success"></i>
+                        <span>https://app.petclinic-saas.com/dashboard</span>
+                    </div>
+                    <div class="header-user">
+                        <i class="fa-solid fa-user-circle"></i>
+                        <span id="current-user-badge">Clinic Owner (Santiago D.)</span>
+                    </div>
+                </div>
+
+                <div class="app-body">
+                    <!-- Sidebar Navigation -->
+                    <aside class="app-sidebar">
+                        <div class="sidebar-logo">
+                            <i class="fa-solid fa-paw"></i>
+                            <span>PetClinic <span class="badge-plan">PLATINUM</span></span>
+                        </div>
+                        <nav class="sidebar-menu">
+                            <button class="menu-item active" data-view="dashboard">
+                                <i class="fa-solid fa-chart-pie"></i> Panel de Control
+                            </button>
+                            <button class="menu-item" data-view="pets">
+                                <i class="fa-solid fa-dog"></i> Mis Mascotas & Visitas
+                            </button>
+                            <button class="menu-item" data-view="hotel">
+                                <i class="fa-solid fa-hotel"></i> Hotel Canino/Felino
+                            </button>
+                            <button class="menu-item" data-view="adoptions">
+                                <i class="fa-solid fa-hand-holding-heart"></i> Centro de Adopciones
+                            </button>
+                            <button class="menu-item" data-view="itsm">
+                                <i class="fa-solid fa-ticket-simple"></i> Monitor SLA (ITSM)
+                            </button>
+                        </nav>
+                        <div class="sidebar-footer">
+                            <div class="role-selector-container">
+                                <label for="role-select">Cambiar Rol:</label>
+                                <select id="role-select">
+                                    <option value="owner">Clinic Owner (Administración)</option>
+                                    <option value="petowner">Pet Owner (Cliente)</option>
+                                    <option value="vet">Veterinario (Clínico)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Main App Content Area -->
+                    <div class="app-content" id="app-view-container">
+                        <!-- Content gets dynamically populated by app.js -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Architecture & Database Schema -->
+        <section id="architecture" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Arquitectura y Estructura de Datos</h2>
+                <p class="section-subtitle">Diseño de software robusto, limpio y escalable con separación de responsabilidades</p>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="arch-tabs">
+                <button class="arch-tab-btn active" data-tab="arch-diagram">Diagrama de Arquitectura</button>
+                <button class="arch-tab-btn" data-tab="db-schema">Esquema de Base de Datos</button>
+            </div>
+
+            <div class="arch-tab-content active" id="arch-diagram">
+                <div class="architecture-visual">
+                    <div class="arch-node client-node">
+                        <div class="node-icon"><i class="fa-brands fa-react"></i></div>
+                        <h5>React SPA (Frontend)</h5>
+                        <p>Vistas modulares, Axios/Fetch, Context API para estado de sesión, almacenamiento local de tokens JWT.</p>
+                    </div>
+                    <div class="arch-flow-arrow"><i class="fa-solid fa-arrow-right-arrow-left"></i><span>Peticiones HTTPS (JSON) + Token JWT</span></div>
+                    <div class="arch-node gateway-node">
+                        <div class="node-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h5>JWT Security Layer</h5>
+                        <p>Interceptor de peticiones y filtros de seguridad en Spring Security. Valida y autoriza roles del token.</p>
+                    </div>
+                    <div class="arch-flow-arrow"><i class="fa-solid fa-arrow-right-arrow-left"></i><span>Endpoints Autorizados</span></div>
+                    <div class="arch-node api-node">
+                        <div class="node-icon"><i class="fa-brands fa-envira"></i></div>
+                        <h5>Spring Boot REST API</h5>
+                        <p>Controladores REST independientes (AdoptionController, BookingController, VetController). Capa de Servicios JPA.</p>
+                    </div>
+                    <div class="arch-flow-arrow"><i class="fa-solid fa-arrow-right-arrow-left"></i><span>JPA Hibernate</span></div>
+                    <div class="arch-node db-node">
+                        <div class="node-icon"><i class="fa-solid fa-database"></i></div>
+                        <h5>Base de Datos SQL</h5>
+                        <p>Tablas normalizadas con relaciones complejas. Entidades unificadas e indexadas para consultas rápidas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arch-tab-content" id="db-schema">
+                <div class="db-schema-visual">
+                    <!-- Table Owner -->
+                    <div class="db-table">
+                        <div class="table-title">owners</div>
+                        <ul class="table-fields">
+                            <li><span class="pk">PK</span> <strong>id</strong> <span class="type">SERIAL</span></li>
+                            <li><strong>first_name</strong> <span class="type">VARCHAR(30)</span></li>
+                            <li><strong>last_name</strong> <span class="type">VARCHAR(30)</span></li>
+                            <li><strong>address</strong> <span class="type">VARCHAR(255)</span></li>
+                            <li><strong>city</strong> <span class="type">VARCHAR(80)</span></li>
+                            <li><strong>telephone</strong> <span class="type">VARCHAR(20)</span></li>
+                            <li><span class="fk">FK</span> <strong>user_id</strong> <span class="type">INTEGER</span></li>
+                        </ul>
+                    </div>
+                    <!-- Relation Arrow -->
+                    <div class="db-relation-line"><i class="fa-solid fa-link"></i></div>
+                    <!-- Table Pet -->
+                    <div class="db-table">
+                        <div class="table-title">pets</div>
+                        <ul class="table-fields">
+                            <li><span class="pk">PK</span> <strong>id</strong> <span class="type">SERIAL</span></li>
+                            <li><strong>name</strong> <span class="type">VARCHAR(30)</span></li>
+                            <li><strong>birth_date</strong> <span class="type">DATE</span></li>
+                            <li><span class="fk">FK</span> <strong>type_id</strong> <span class="type">INTEGER</span></li>
+                            <li><span class="fk">FK</span> <strong>owner_id</strong> <span class="type">INTEGER</span></li>
+                        </ul>
+                    </div>
+                    <!-- Relation Arrow -->
+                    <div class="db-relation-line"><i class="fa-solid fa-link"></i></div>
+                    <!-- Table Booking -->
+                    <div class="db-table font-highlight">
+                        <div class="table-title">bookings (Hotel)</div>
+                        <ul class="table-fields">
+                            <li><span class="pk">PK</span> <strong>id</strong> <span class="type">SERIAL</span></li>
+                            <li><strong>start_date</strong> <span class="type">DATE</span></li>
+                            <li><strong>end_date</strong> <span class="type">DATE</span></li>
+                            <li><span class="fk">FK</span> <strong>pet_id</strong> <span class="type">INTEGER</span></li>
+                            <li><span class="fk">FK</span> <strong>room_id</strong> <span class="type">INTEGER</span></li>
+                            <li><strong>status</strong> <span class="type">VARCHAR(20)</span></li>
+                        </ul>
+                    </div>
+                    <!-- Relation Arrow -->
+                    <div class="db-relation-line"><i class="fa-solid fa-link"></i></div>
+                    <!-- Table Adoption -->
+                    <div class="db-table font-highlight">
+                        <div class="table-title">adoptions</div>
+                        <ul class="table-fields">
+                            <li><span class="pk">PK</span> <strong>id</strong> <span class="type">SERIAL</span></li>
+                            <li><strong>description</strong> <span class="type">TEXT</span></li>
+                            <li><strong>post_date</strong> <span class="type">TIMESTAMP</span></li>
+                            <li><span class="fk">FK</span> <strong>pet_id</strong> <span class="type">INTEGER</span></li>
+                            <li><span class="fk">FK</span> <strong>owner_id</strong> <span class="type">INTEGER</span></li>
+                            <li><strong>status</strong> <span class="type">VARCHAR(20)</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DevOps & Quality Metrics -->
+        <section id="devops" class="section bg-card-section">
+            <div class="section-header">
+                <h2 class="section-title">Prácticas DevOps & Calidad Continua</h2>
+                <p class="section-subtitle">Asegurando la estabilidad, el rendimiento y la mantenibilidad del software</p>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="devops-grid">
+                <div class="metric-card">
+                    <div class="sonar-gauge">
+                        <span class="gauge-grade">A</span>
+                        <div class="gauge-label">SonarQube Gate</div>
+                    </div>
+                    <div class="metric-details">
+                        <h5>Calidad del Código (SonarQube)</h5>
+                        <ul class="metric-list">
+                            <li><i class="fa-solid fa-bug text-success"></i> <strong>0</strong> Bugs detectados</li>
+                            <li><i class="fa-solid fa-shield-virus text-success"></i> <strong>0</strong> Vulnerabilidades</li>
+                            <li><i class="fa-solid fa-triangle-exclamation text-success"></i> <strong>0</strong> Code Smells</li>
+                            <li><i class="fa-solid fa-percentage text-accent"></i> <strong>95.8%</strong> Cobertura de Tests</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="devops-card">
+                    <h5>Flujo de Trabajo GitFlow</h5>
+                    <p>Gestión estricta de ramas y control de cambios para evitar conflictos en producción:</p>
+                    <div class="gitflow-sim">
+                        <div class="git-branch main-branch">
+                            <span class="branch-label">main</span>
+                            <div class="git-node" title="Release estable"></div>
+                            <div class="git-line"></div>
+                            <div class="git-node" title="Despliegue final"></div>
+                        </div>
+                        <div class="git-branch develop-branch">
+                            <span class="branch-label">develop</span>
+                            <div class="git-line"></div>
+                            <div class="git-node" title="Integración"></div>
+                            <div class="git-line"></div>
+                            <div class="git-node" title="Sincronización"></div>
+                        </div>
+                        <div class="git-branch feature-branch">
+                            <span class="branch-label">feature/issue-34</span>
+                            <div class="git-line"></div>
+                            <div class="git-node active-pulse" title="Mi tarea frontend"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <i class="fa-solid fa-paw logo-icon"></i>
+                <span>PetClinic <span class="text-accent">SaaS</span></span>
+            </div>
+            <p class="footer-text">
+                Este escaparate es un proyecto de demostración creado y diseñado por <strong>Santiago Diestro Gallego</strong>. Todos los derechos reservados. &copy; 2026.
+            </p>
+            <div class="footer-links">
+                <a href="https://github.com/SantiiDG" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+                <a href="mailto:santi18diestro@gmail.com"><i class="fa-solid fa-envelope"></i> Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
