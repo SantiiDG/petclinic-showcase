@@ -11,24 +11,24 @@ const AppState = {
     ],
     
     hotelRooms: [
-        { id: 1, name: 'Suite Básica', type: 'Basic', price: 5, capacity: 5, occupied: 2 },
-        { id: 2, name: 'Suite Oro', type: 'Gold', price: 10, capacity: 10, occupied: 4 },
-        { id: 3, name: 'Suite Platino', type: 'Platinum', price: 15, capacity: 3, occupied: 1 }
+        { id: 1, name: 'Basic Suite', type: 'Basic', price: 5, capacity: 5, occupied: 2 },
+        { id: 2, name: 'Gold Suite', type: 'Gold', price: 10, capacity: 10, occupied: 4 },
+        { id: 3, name: 'Platinum Suite', type: 'Platinum', price: 15, capacity: 3, occupied: 1 }
     ],
     
     bookings: [
-        { id: 1, petName: 'Coco', roomName: 'Suite Platino', startDate: '2026-06-20', endDate: '2026-06-25', status: 'Confirmada' }
+        { id: 1, petName: 'Coco', roomName: 'Platinum Suite', startDate: '2026-06-20', endDate: '2026-06-25', status: 'Confirmed' }
     ],
     
     adoptions: [
-        { id: 1, petName: 'Thor', type: 'Dog', age: '2 años', desc: 'Muy juguetón y cariñoso, ideal para familias.', status: 'Disponible', applicationsCount: 2 },
-        { id: 2, petName: 'Simba', type: 'Cat', age: '1 año', desc: 'Tranquilo y acostumbrado a interiores.', status: 'Disponible', applicationsCount: 0 }
+        { id: 1, petName: 'Thor', type: 'Dog', age: '2 years', desc: 'Very playful and friendly, great with families.', status: 'Available', applicationsCount: 2 },
+        { id: 2, petName: 'Simba', type: 'Cat', age: '1 year', desc: 'Calm and used to living indoors.', status: 'Available', applicationsCount: 0 }
     ],
     
     tickets: [
-        { id: 'I-001347', title: 'Fallo acceso a pricing plans para owners', type: 'Incidencia', priority: 'P2', status: 'Resuelto', tto: '4h (Límite: 3d)', ttr: '24h (Límite: 5d)', slaStatus: 'DENTRO' },
-        { id: 'I-001509', title: 'Caída de servidor en App Engine', type: 'Incidencia', priority: 'P1', status: 'Resuelto', tto: '15m (Límite: 12h)', ttr: '4h (Límite: 2d)', slaStatus: 'DENTRO' },
-        { id: 'R-001427', title: 'Service Request: Añadir conejo como tipo de mascota', type: 'Petición', priority: 'P3', status: 'Abierto', tto: '2h (Límite: 4d)', ttr: 'En progreso (Límite: 7d)', slaStatus: 'DENTRO' }
+        { id: 'I-001347', title: 'Access control failure on pricing plans for owners', type: 'Incident', priority: 'P2', status: 'Resolved', tto: '4h (Limit: 3d)', ttr: '24h (Limit: 5d)', slaStatus: 'WITHIN' },
+        { id: 'I-001509', title: 'Server crash on Google App Engine', type: 'Incident', priority: 'P1', status: 'Resolved', tto: '15m (Limit: 12h)', ttr: '4h (Limit: 2d)', slaStatus: 'WITHIN' },
+        { id: 'R-001427', title: 'Service Request: Add rabbit as a pet type', type: 'Request', priority: 'P3', status: 'Open', tto: '2h (Limit: 4d)', ttr: 'In progress (Limit: 7d)', slaStatus: 'WITHIN' }
     ],
     
     // SLA Statistics
@@ -36,8 +36,8 @@ const AppState = {
         totalTickets: 3,
         resolvedTickets: 2,
         slaCompliance: 100, // %
-        avgResolutionTime: '14.5 horas',
-        activeDiscount: 'Ninguno (100% SLA cumplido)'
+        avgResolutionTime: '14.5 hours',
+        activeDiscount: 'None (100% SLA met)'
     }
 };
 
@@ -124,10 +124,10 @@ function initRoleSelector() {
                 badge.innerText = 'Clinic Owner (Santiago D.)';
                 document.querySelector('.badge-plan').innerText = 'PLATINUM';
             } else if (AppState.currentRole === 'petowner') {
-                badge.innerText = 'Pet Owner (Cliente)';
+                badge.innerText = 'Pet Owner (Client)';
                 document.querySelector('.badge-plan').innerText = 'GOLD';
             } else {
-                badge.innerText = 'Veterinario (Santiago P.)';
+                badge.innerText = 'Veterinarian (Santiago P.)';
                 document.querySelector('.badge-plan').innerText = 'BASIC';
             }
             
@@ -189,33 +189,33 @@ function initArchitectureTabs() {
 function renderDashboardView(container) {
     const activePets = AppState.pets.length;
     const totalBookings = AppState.bookings.length;
-    const openTickets = AppState.tickets.filter(t => t.status === 'Abierto').length;
+    const openTickets = AppState.tickets.filter(t => t.status === 'Open').length;
     const slaPercent = AppState.slaStats.slaCompliance;
     
     container.innerHTML = `
-        <h3 class="view-title">Panel de Control</h3>
-        <p class="view-subtitle">Resumen operativo general de la veterinaria para el rol activo.</p>
+        <h3 class="view-title">Dashboard</h3>
+        <p class="view-subtitle">General operational summary of the clinic for the active role.</p>
         
         <div class="dashboard-stats">
             <div class="dashboard-card">
                 <div class="card-icon-container"><i class="fa-solid fa-dog"></i></div>
                 <div>
                     <div class="dash-card-val">${activePets}</div>
-                    <div class="dash-card-lbl">Mascotas Activas</div>
+                    <div class="dash-card-lbl">Active Pets</div>
                 </div>
             </div>
             <div class="dashboard-card">
                 <div class="card-icon-container green"><i class="fa-solid fa-hotel"></i></div>
                 <div>
                     <div class="dash-card-val">${totalBookings}</div>
-                    <div class="dash-card-lbl">Reservas Hotel</div>
+                    <div class="dash-card-lbl">Hotel Bookings</div>
                 </div>
             </div>
             <div class="dashboard-card">
                 <div class="card-icon-container orange"><i class="fa-solid fa-ticket"></i></div>
                 <div>
                     <div class="dash-card-val">${openTickets}</div>
-                    <div class="dash-card-lbl">Tickets Abiertos</div>
+                    <div class="dash-card-lbl">Open Tickets</div>
                 </div>
             </div>
             <div class="dashboard-card">
@@ -229,75 +229,75 @@ function renderDashboardView(container) {
         
         <div class="dashboard-details-grid">
             <div class="panel-block">
-                <h4><i class="fa-solid fa-bell"></i> Actividad Reciente del Sistema</h4>
+                <h4><i class="fa-solid fa-bell"></i> Recent System Activity</h4>
                 <table class="panel-table">
                     <thead>
                         <tr>
-                            <th>Fecha</th>
-                            <th>Evento</th>
-                            <th>Responsable</th>
-                            <th>Estado</th>
+                            <th>Date</th>
+                            <th>Event</th>
+                            <th>Responsible</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Hoy 19:40h</td>
-                            <td>Nueva mascota agregada (Luna)</td>
+                            <td>Today 19:40h</td>
+                            <td>New pet added (Luna)</td>
                             <td>Gregorio Z.</td>
-                            <td><span class="table-badge success">Completado</span></td>
+                            <td><span class="table-badge success">Completed</span></td>
                         </tr>
                         <tr>
-                            <td>Ayer 15:30h</td>
-                            <td>Reserva en Suite Platino</td>
+                            <td>Yesterday 15:30h</td>
+                            <td>Boarding booked in Platinum Suite</td>
                             <td>Santiago D.</td>
-                            <td><span class="table-badge success">Confirmado</span></td>
+                            <td><span class="table-badge success">Confirmed</span></td>
                         </tr>
                         <tr>
-                            <td>18 de Mayo</td>
-                            <td>SLA Ticket Monitor (I-001509) cerrado</td>
+                            <td>May 18</td>
+                            <td>SLA Ticket Monitor (I-001509) closed</td>
                             <td>Santiago D.</td>
                             <td><span class="table-badge success">SLA OK</span></td>
                         </tr>
                         <tr>
-                            <td>15 de Mayo</td>
-                            <td>Solicitud de Adopción de "Thor"</td>
+                            <td>May 15</td>
+                            <td>Adoption application submitted for "Thor"</td>
                             <td>Rocío M.</td>
-                            <td><span class="table-badge pending">Pendiente</span></td>
+                            <td><span class="table-badge pending">Pending</span></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             
             <div class="panel-block">
-                <h4><i class="fa-solid fa-credit-card"></i> Suscripción & Add-ons (SPACE)</h4>
+                <h4><i class="fa-solid fa-credit-card"></i> Subscription & Add-ons (SPACE)</h4>
                 <div class="pricing-preview-list">
                     <div class="pricing-preview-item ${AppState.currentRole === 'vet' ? 'active' : ''}">
                         <div>
-                            <strong>Plan Basic</strong>
-                            <div class="dash-card-lbl">1 Mascota máx · 2 visitas / mes</div>
+                            <strong>Basic Plan</strong>
+                            <div class="dash-card-lbl">1 Max Pet · 2 Visits / month</div>
                         </div>
-                        <div><strong>5.00€ <span class="dash-card-lbl">/mes</span></strong></div>
+                        <div><strong>5.00€ <span class="dash-card-lbl">/mo</span></strong></div>
                     </div>
                     <div class="pricing-preview-item ${AppState.currentRole === 'petowner' ? 'active' : ''}">
                         <div>
-                            <strong>Plan Gold</strong>
-                            <div class="dash-card-lbl">3 Mascotas máx · Adopciones</div>
+                            <strong>Gold Plan</strong>
+                            <div class="dash-card-lbl">3 Max Pets · Adoptions enabled</div>
                         </div>
-                        <div><strong>10.00€ <span class="dash-card-lbl">/mes</span></strong></div>
+                        <div><strong>10.00€ <span class="dash-card-lbl">/mo</span></strong></div>
                     </div>
                     <div class="pricing-preview-item ${AppState.currentRole === 'owner' ? 'active' : ''}">
                         <div>
-                            <strong>Plan Platinum</strong>
-                            <div class="dash-card-lbl">Mascotas ilimitadas · Hotel · Consultas online</div>
+                            <strong>Platinum Plan</strong>
+                            <div class="dash-card-lbl">Unlimited Pets · Hotel · Online Consultations</div>
                         </div>
-                        <div><strong>15.00€ <span class="dash-card-lbl">/mes</span></strong></div>
+                        <div><strong>15.00€ <span class="dash-card-lbl">/mo</span></strong></div>
                     </div>
                     <div class="pricing-preview-item" style="border-style: dashed; background: rgba(124, 77, 255, 0.02)">
                         <div>
-                            <strong>Add-on: Buscador Felino (Cat API)</strong>
-                            <div class="dash-card-lbl">Integración externa de razas de gatos</div>
+                            <strong>Add-on: Cat Breed Search (Cat API)</strong>
+                            <div class="dash-card-lbl">External API integration for cat breed details</div>
                         </div>
-                        <div><strong>+3.00€ <span class="dash-card-lbl">/mes</span></strong></div>
+                        <div><strong>+3.00€ <span class="dash-card-lbl">/mo</span></strong></div>
                     </div>
                 </div>
             </div>
@@ -314,10 +314,10 @@ function renderPetsView(container) {
             <td><span class="table-badge success">${pet.type}</span></td>
             <td>${pet.birthDate}</td>
             <td>${pet.owner}</td>
-            <td>${pet.visitsCount} visitas</td>
+            <td>${pet.visitsCount} visits</td>
             <td>
                 <button class="btn btn-secondary btn-sm" onclick="addVisitToPet(${pet.id})">
-                    <i class="fa-solid fa-notes-medical"></i> Registrar Visita
+                    <i class="fa-solid fa-notes-medical"></i> Log Visit
                 </button>
             </td>
         </tr>
@@ -326,44 +326,44 @@ function renderPetsView(container) {
     container.innerHTML = `
         <div class="pets-top-actions">
             <div>
-                <h3 class="view-title">Mis Mascotas & Historial Clínico</h3>
-                <p class="view-subtitle">Registra nuevas mascotas y asocia visitas clínicas al historial.</p>
+                <h3 class="view-title">My Pets & Clinical Records</h3>
+                <p class="view-subtitle">Register new pets and associate clinical visits to their history.</p>
             </div>
             ${AppState.currentRole !== 'vet' ? `
                 <button class="btn btn-primary btn-sm" id="btn-add-pet">
-                    <i class="fa-solid fa-plus"></i> Nueva Mascota
+                    <i class="fa-solid fa-plus"></i> New Pet
                 </button>
             ` : ''}
         </div>
         
         <div id="add-pet-form-container" style="display:none; margin-bottom: 25px;" class="panel-block">
-            <h4><i class="fa-solid fa-dog"></i> Formulario de Registro</h4>
+            <h4><i class="fa-solid fa-dog"></i> Registration Form</h4>
             <form id="add-pet-form" onsubmit="handlePetSubmit(event)">
                 <div class="form-grid">
                     <div class="form-group">
-                        <label for="pet-name">Nombre de la Mascota</label>
-                        <input type="text" id="pet-name" required placeholder="Ej. Bobby">
+                        <label for="pet-name">Pet Name</label>
+                        <input type="text" id="pet-name" required placeholder="E.g. Bobby">
                     </div>
                     <div class="form-group">
-                        <label for="pet-type">Especie</label>
+                        <label for="pet-type">Species</label>
                         <select id="pet-type">
-                            <option value="Dog">Perro (Dog)</option>
-                            <option value="Cat">Gato (Cat)</option>
-                            <option value="Rabbit">Conejo (Rabbit) - Service Request</option>
+                            <option value="Dog">Dog</option>
+                            <option value="Cat">Cat</option>
+                            <option value="Rabbit">Rabbit (Service Request)</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="pet-birth">Fecha de Nacimiento</label>
+                        <label for="pet-birth">Birth Date</label>
                         <input type="date" id="pet-birth" required>
                     </div>
                     <div class="form-group">
-                        <label for="pet-owner">Propietario</label>
-                        <input type="text" id="pet-owner" value="${AppState.currentRole === 'owner' ? 'Santiago Diestro' : 'Propietario Cliente'}" required>
+                        <label for="pet-owner">Owner Name</label>
+                        <input type="text" id="pet-owner" value="${AppState.currentRole === 'owner' ? 'Santiago Diestro' : 'Client Owner'}" required>
                     </div>
                 </div>
                 <div style="display:flex; gap: 10px; justify-content: flex-end;">
-                    <button type="button" class="btn btn-secondary btn-sm" onclick="toggleAddPetForm(false)">Cancelar</button>
-                    <button type="submit" class="btn btn-primary btn-sm">Guardar Mascota</button>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick="toggleAddPetForm(false)">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Save Pet</button>
                 </div>
             </form>
         </div>
@@ -373,12 +373,12 @@ function renderPetsView(container) {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Tipo</th>
-                        <th>Fecha de Nacimiento</th>
-                        <th>Dueño</th>
-                        <th>Visitas</th>
-                        <th>Acción</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Birth Date</th>
+                        <th>Owner</th>
+                        <th>Visits</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -419,7 +419,7 @@ window.addVisitToPet = function(petId) {
     
     // Simulate logging a visit
     pet.visitsCount += 1;
-    alert(`Visita médica registrada con éxito para la mascota: ${pet.name}. El historial clínico ha sido actualizado.`);
+    alert(`Clinical visit successfully logged for ${pet.name}. The pet's medical record has been updated.`);
     renderCurrentView();
 };
 
@@ -436,19 +436,19 @@ function renderHotelView(container) {
     `).join('');
 
     container.innerHTML = `
-        <h3 class="view-title">Hotel de Mascotas (Hospedaje)</h3>
-        <p class="view-subtitle">Gestión de habitaciones y estancias para el cuidado de mascotas durante ausencias.</p>
+        <h3 class="view-title">Pet Hotel (Boarding Care)</h3>
+        <p class="view-subtitle">Manage rooms and boarding stays to take care of pets during owners' absences.</p>
         
         <div class="hotel-room-grid">
             ${AppState.hotelRooms.map(room => `
                 <div class="room-card ${room.type === 'Platinum' ? 'selected' : ''}" onclick="selectRoom('${room.name}', ${room.price})">
                     <div class="room-icon"><i class="fa-solid fa-hotel"></i></div>
                     <h5>${room.name}</h5>
-                    <div class="room-price">${room.price}.00€ <span class="dash-card-lbl">/ noche</span></div>
+                    <div class="room-price">${room.price}.00€ <span class="dash-card-lbl">/ night</span></div>
                     <ul class="room-features">
-                        <li>Capacidad: ${room.capacity} mascotas</li>
-                        <li>Ocupadas: ${room.occupied} habs.</li>
-                        <li>Plan sugerido: ${room.type}</li>
+                        <li>Capacity: ${room.capacity} pets</li>
+                        <li>Occupied: ${room.occupied} rooms</li>
+                        <li>SLA Plan: ${room.type}</li>
                     </ul>
                 </div>
             `).join('')}
@@ -456,49 +456,49 @@ function renderHotelView(container) {
         
         <div class="dashboard-details-grid">
             <div class="panel-block">
-                <h4><i class="fa-solid fa-calendar-plus"></i> Reservar Habitación</h4>
+                <h4><i class="fa-solid fa-calendar-plus"></i> Book a Suite</h4>
                 <form onsubmit="handleHotelSubmit(event)">
                     <div class="form-grid">
                         <div class="form-group">
-                            <label for="hotel-pet">Seleccionar Mascota</label>
+                            <label for="hotel-pet">Select Pet</label>
                             <select id="hotel-pet">
                                 ${AppState.pets.map(p => `<option value="${p.name}">${p.name} (${p.type})</option>`).join('')}
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="hotel-room">Suite Seleccionada</label>
-                            <input type="text" id="hotel-room" value="Suite Platino" readonly>
+                            <label for="hotel-room">Selected Suite</label>
+                            <input type="text" id="hotel-room" value="Platinum Suite" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="hotel-start">Fecha de Entrada</label>
+                            <label for="hotel-start">Check-in Date</label>
                             <input type="date" id="hotel-start" value="2026-06-22" required>
                         </div>
                         <div class="form-group">
-                            <label for="hotel-end">Fecha de Salida</label>
+                            <label for="hotel-end">Check-out Date</label>
                             <input type="date" id="hotel-end" value="2026-06-27" required>
                         </div>
                     </div>
                     <div style="display:flex; justify-content: space-between; align-items: center; margin-top: 20px;">
-                        <span class="dash-card-lbl">Precio estimado: <strong id="hotel-price-label">15.00€ / noche</strong></span>
-                        <button type="submit" class="btn btn-primary btn-sm">Confirmar Reserva</button>
+                        <span class="dash-card-lbl">Estimated Price: <strong id="hotel-price-label">15.00€ / night</strong></span>
+                        <button type="submit" class="btn btn-primary btn-sm">Confirm Booking</button>
                     </div>
                 </form>
             </div>
             
             <div class="panel-block">
-                <h4><i class="fa-solid fa-calendar-days"></i> Reservas Activas</h4>
+                <h4><i class="fa-solid fa-calendar-days"></i> Active Boardings</h4>
                 <table class="panel-table">
                     <thead>
                         <tr>
-                            <th>Mascota</th>
-                            <th>Habitación</th>
-                            <th>Entrada</th>
-                            <th>Salida</th>
-                            <th>Estado</th>
+                            <th>Pet</th>
+                            <th>Suite</th>
+                            <th>Check-in</th>
+                            <th>Check-out</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        ${bookingsRows.length > 0 ? bookingsRows : '<tr><td colspan="5" style="text-align:center;">No hay reservas registradas.</td></tr>'}
+                        ${bookingsRows.length > 0 ? bookingsRows : '<tr><td colspan="5" style="text-align:center;">No boarding bookings recorded.</td></tr>'}
                     </tbody>
                 </table>
             </div>
@@ -510,7 +510,7 @@ window.selectRoom = function(roomName, price) {
     const input = document.getElementById('hotel-room');
     const label = document.getElementById('hotel-price-label');
     if (input) input.value = roomName;
-    if (label) label.innerHTML = `${price}.00€ / noche`;
+    if (label) label.innerHTML = `${price}.00€ / night`;
     
     // Highlight selected card visually
     const cards = document.querySelectorAll('.room-card');
@@ -535,10 +535,10 @@ window.handleHotelSubmit = function(e) {
         roomName,
         startDate,
         endDate,
-        status: 'Confirmada'
+        status: 'Confirmed'
     });
     
-    alert(`Reserva en el Hotel confirmada para ${petName} en la habitación ${roomName} desde el ${startDate} al ${endDate}.`);
+    alert(`Boarding suite booking confirmed for ${petName} in ${roomName} from ${startDate} to ${endDate}.`);
     renderCurrentView();
 };
 
@@ -547,16 +547,16 @@ function renderAdoptionsView(container) {
     let adoptionsCards = AppState.adoptions.map(ad => `
         <div class="panel-block" style="margin-bottom: 20px;">
             <div style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <h4 style="margin-bottom:0;"><i class="fa-solid fa-heart text-danger"></i> Mascota: ${ad.petName} (${ad.type})</h4>
+                <h4 style="margin-bottom:0;"><i class="fa-solid fa-hand-holding-heart text-danger"></i> Pet: ${ad.petName} (${ad.type})</h4>
                 <span class="table-badge success">${ad.status}</span>
             </div>
             <p class="dash-card-lbl" style="font-size:0.9rem; margin-bottom:15px;">${ad.desc}</p>
             <div style="display:flex; justify-content: space-between; align-items: center; border-top:1px solid rgba(255,255,255,0.04); padding-top:15px;">
-                <span class="dash-card-lbl">Edad aproximada: <strong>${ad.age}</strong></span>
+                <span class="dash-card-lbl">Approximate Age: <strong>${ad.age}</strong></span>
                 <div>
-                    <span class="dash-card-lbl" style="margin-right:15px;">Peticiones recibidas: <strong>${ad.applicationsCount}</strong></span>
+                    <span class="dash-card-lbl" style="margin-right:15px;">Applications: <strong>${ad.applicationsCount}</strong></span>
                     <button class="btn btn-primary btn-sm" onclick="applyForAdoption(${ad.id})">
-                        <i class="fa-solid fa-file-signature"></i> Solicitar Adopción
+                        <i class="fa-solid fa-file-signature"></i> Apply for Adoption
                     </button>
                 </div>
             </div>
@@ -564,40 +564,40 @@ function renderAdoptionsView(container) {
     `).join('');
 
     container.innerHTML = `
-        <h3 class="view-title">Centro de Adopciones</h3>
-        <p class="view-subtitle">Facilita el encuentro entre mascotas abandonadas o sin hogar y nuevas familias adoptantes.</p>
+        <h3 class="view-title">Adoption Center</h3>
+        <p class="view-subtitle">Help abandoned pets find their forever home and link them with caring adoptants.</p>
         
         <div class="dashboard-details-grid">
             <div>
-                <h4><i class="fa-solid fa-paw"></i> Mascotas en Adopción</h4>
+                <h4><i class="fa-solid fa-paw"></i> Pets Available for Adoption</h4>
                 ${adoptionsCards}
             </div>
             
             <div class="panel-block" style="align-self: flex-start;">
-                <h4><i class="fa-solid fa-bullhorn"></i> Publicar Mascota para Adopción</h4>
+                <h4><i class="fa-solid fa-bullhorn"></i> Post Pet for Adoption</h4>
                 <form onsubmit="handleAdoptionSubmit(event)">
                     <div class="form-group" style="margin-bottom: 12px;">
-                        <label for="adopt-name">Nombre de la Mascota</label>
-                        <input type="text" id="adopt-name" required placeholder="Ej. Thor">
+                        <label for="adopt-name">Pet Name</label>
+                        <input type="text" id="adopt-name" required placeholder="E.g. Thor">
                     </div>
                     <div class="form-group" style="margin-bottom: 12px;">
-                        <label for="adopt-type">Especie</label>
+                        <label for="adopt-type">Species</label>
                         <select id="adopt-type">
-                            <option value="Dog">Perro (Dog)</option>
-                            <option value="Cat">Gato (Cat)</option>
-                            <option value="Rabbit">Conejo (Rabbit)</option>
+                            <option value="Dog">Dog</option>
+                            <option value="Cat">Cat</option>
+                            <option value="Rabbit">Rabbit</option>
                         </select>
                     </div>
                     <div class="form-group" style="margin-bottom: 12px;">
-                        <label for="adopt-age">Edad aproximada</label>
-                        <input type="text" id="adopt-age" placeholder="Ej. 6 meses" required>
+                        <label for="adopt-age">Approximate Age</label>
+                        <input type="text" id="adopt-age" placeholder="E.g. 6 months" required>
                     </div>
                     <div class="form-group" style="margin-bottom: 15px;">
-                        <label for="adopt-desc">Descripción / Historia</label>
-                        <textarea id="adopt-desc" rows="3" placeholder="Información sobre su carácter, estado de salud..." required></textarea>
+                        <label for="adopt-desc">Description / Story</label>
+                        <textarea id="adopt-desc" rows="3" placeholder="Provide details about their character, health status, story..." required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary btn-sm" style="width: 100%; justify-content: center;">
-                        <i class="fa-solid fa-plus"></i> Publicar en el Catálogo
+                        <i class="fa-solid fa-plus"></i> Post on Catalog
                     </button>
                 </form>
             </div>
@@ -609,7 +609,7 @@ window.applyForAdoption = function(id) {
     const item = AppState.adoptions.find(a => a.id === id);
     if (item) {
         item.applicationsCount += 1;
-        alert(`Tu solicitud de adopción para "${item.petName}" ha sido enviada con éxito al propietario de la clínica. Evaluaremos tu perfil.`);
+        alert(`Your adoption application for "${item.petName}" has been successfully submitted. We will review your profile shortly.`);
         renderCurrentView();
     }
 };
@@ -627,18 +627,18 @@ window.handleAdoptionSubmit = function(e) {
         type,
         age,
         desc,
-        status: 'Disponible',
+        status: 'Available',
         applicationsCount: 0
     });
     
-    alert(`La mascota "${petName}" se ha listado exitosamente en el catálogo público de adopciones.`);
+    alert(`The pet "${petName}" has been successfully listed in the public adoption catalog.`);
     renderCurrentView();
 };
 
 // --- VIEW: ITSM / SLA Monitor ---
 function renderItsmView(container) {
     let ticketsRows = AppState.tickets.map(t => {
-        let statusBadgeClass = t.slaStatus === 'DENTRO' ? 'success' : 'danger';
+        let statusBadgeClass = t.slaStatus === 'WITHIN' ? 'success' : 'danger';
         let priorityBadgeClass = '';
         if (t.priority === 'P1') priorityBadgeClass = 'priority-p1';
         else if (t.priority === 'P2') priorityBadgeClass = 'priority-p2';
@@ -652,14 +652,14 @@ function renderItsmView(container) {
                 </div>
                 <div class="ticket-desc">${t.title}</div>
                 <div class="ticket-sla-stats">
-                    <span>TTO (Asignación): <strong>${t.tto}</strong></span>
-                    <span>TTR (Resolución): <strong>${t.ttr}</strong></span>
-                    <span>SLA Estado: <span class="table-badge ${statusBadgeClass}">${t.slaStatus} SLA</span></span>
+                    <span>TTO (Response): <strong>${t.tto}</strong></span>
+                    <span>TTR (Resolution): <strong>${t.ttr}</strong></span>
+                    <span>SLA Status: <span class="table-badge ${statusBadgeClass}">${t.slaStatus} SLA</span></span>
                 </div>
-                ${t.status === 'Abierto' ? `
+                ${t.status === 'Open' ? `
                     <div class="ticket-actions">
                         <button class="btn btn-primary btn-sm" onclick="resolveTicket('${t.id}')">
-                            <i class="fa-solid fa-check"></i> Resolver Ticket
+                            <i class="fa-solid fa-check"></i> Resolve Ticket
                         </button>
                     </div>
                 ` : ''}
@@ -668,68 +668,68 @@ function renderItsmView(container) {
     }).join('');
 
     container.innerHTML = `
-        <h3 class="view-title">SLA & Ticket Monitor (iTop ITSM Integration)</h3>
-        <p class="view-subtitle">Simulación de la gestión de incidencias del Customer Agreement con tiempos de respuesta (TTO) y resolución (TTR).</p>
+        <h3 class="view-title">SLA & Ticket Monitor (iTop ITSM Simulation)</h3>
+        <p class="view-subtitle">Simulate incident and service request response (TTO) and resolution (TTR) times defined in the Customer Agreement.</p>
         
         <div class="itsm-dashboard">
             <div class="panel-block itsm-ticket-form">
-                <h4><i class="fa-solid fa-bug-slash"></i> Registrar Nueva Incidencia / Solicitud</h4>
+                <h4><i class="fa-solid fa-bug-slash"></i> Log New Incident / Request</h4>
                 <form onsubmit="handleTicketSubmit(event)">
                     <div class="form-group" style="margin-bottom:12px;">
-                        <label for="t-title">Título del Ticket / Fallo</label>
-                        <input type="text" id="t-title" required placeholder="Ej. Error 500 al guardar visitas">
+                        <label for="t-title">Ticket / Issue Title</label>
+                        <input type="text" id="t-title" required placeholder="E.g. Error 500 when saving visits">
                     </div>
                     <div class="form-grid" style="margin-bottom:12px;">
                         <div class="form-group">
-                            <label for="t-type">Tipo</label>
+                            <label for="t-type">Type</label>
                             <select id="t-type">
-                                <option value="Incidencia">Incidencia (Fallo)</option>
-                                <option value="Petición">Petición de Servicio</option>
+                                <option value="Incident">Incident (Bug)</option>
+                                <option value="Request">Service Request</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="t-plan">Plan Cliente</label>
+                            <label for="t-plan">Client SLA Plan</label>
                             <select id="t-plan">
-                                <option value="platinum">Platinum (Prioritario)</option>
-                                <option value="gold">Gold (Estándar)</option>
-                                <option value="basic">Basic (Sin SLA)</option>
+                                <option value="platinum">Platinum (Priority)</option>
+                                <option value="gold">Gold (Standard)</option>
+                                <option value="basic">Basic (No SLA)</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-grid" style="margin-bottom:15px;">
                         <div class="form-group">
-                            <label for="t-impact">Impacto al Negocio</label>
+                            <label for="t-impact">Business Impact</label>
                             <select id="t-impact">
-                                <option value="High">Alto (Servicio Caído)</option>
-                                <option value="Medium">Medio (Módulo fallando)</option>
-                                <option value="Low">Bajo (Fallo cosmético)</option>
+                                <option value="High">High (Service down)</option>
+                                <option value="Medium">Medium (Module error)</option>
+                                <option value="Low">Low (Cosmetic issue)</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="t-urgency">Urgencia Operativa</label>
+                            <label for="t-urgency">Operational Urgency</label>
                             <select id="t-urgency">
-                                <option value="High">Alta (Necesita arreglo inmediato)</option>
-                                <option value="Medium">Media (Operativo temporal)</option>
-                                <option value="Low">Baja (Sin prisa)</option>
+                                <option value="High">High (Immediate attention needed)</option>
+                                <option value="Medium">Medium (Workaround available)</option>
+                                <option value="Low">Low (Non-urgent)</option>
                             </select>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-sm" style="width: 100%; justify-content: center;">
-                        <i class="fa-solid fa-paper-plane"></i> Crear Ticket iTop
+                        <i class="fa-solid fa-paper-plane"></i> Create iTop Ticket
                     </button>
                 </form>
                 
                 <div class="priority-matrix-info">
-                    <strong>Matriz de Prioridad ITSM (Calculada):</strong><br>
-                    - Impacto Alto + Urgencia Alta = <strong>P1 (Crítica)</strong><br>
-                    - Impacto Medio + Urgencia Media/Baja = <strong>P3 (Estándar)</strong>
+                    <strong>ITSM Priority Matrix (Calculated):</strong><br>
+                    - High Impact + High Urgency = <strong>P1 (Critical)</strong><br>
+                    - Medium Impact + Medium/Low Urgency = <strong>P3 (Standard)</strong>
                 </div>
             </div>
             
             <div class="itsm-tickets-panel">
                 <div style="display:flex; justify-content: space-between; align-items:center;">
-                    <h4><i class="fa-solid fa-list-check"></i> Cola de Tickets iTop</h4>
-                    <span class="dash-card-lbl">SLA Global: <strong class="text-success">${AppState.slaStats.slaCompliance}%</strong></span>
+                    <h4><i class="fa-solid fa-list-check"></i> iTop Ticket Queue</h4>
+                    <span class="dash-card-lbl">Global SLA Compliance: <strong class="text-success">${AppState.slaStats.slaCompliance}%</strong></span>
                 </div>
                 ${ticketsRows}
             </div>
@@ -749,22 +749,22 @@ window.handleTicketSubmit = function(e) {
     const priority = PriorityMatrix.calculate(impact, urgency);
     
     // Generate simulated SLA targets
-    let limitTto = '2 días';
-    let limitTtr = '5 días';
+    let limitTto = '2 days';
+    let limitTtr = '5 days';
     if (plan === 'platinum') {
-        if (priority === 'P1') { limitTto = '12 horas'; limitTtr = '2 días'; }
-        else if (priority === 'P2') { limitTto = '24 horas'; limitTtr = '4 días'; }
-        else { limitTto = '2 días'; limitTtr = '6 días'; }
+        if (priority === 'P1') { limitTto = '12 hours'; limitTtr = '2 days'; }
+        else if (priority === 'P2') { limitTto = '24 hours'; limitTtr = '4 days'; }
+        else { limitTto = '2 days'; limitTtr = '6 days'; }
     } else if (plan === 'gold') {
-        if (priority === 'P1') { limitTto = '2 días'; limitTtr = '4 días'; }
-        else if (priority === 'P2') { limitTto = '3 días'; limitTtr = '5 días'; }
-        else { limitTto = '4 días'; limitTtr = '7 días'; }
+        if (priority === 'P1') { limitTto = '2 days'; limitTtr = '4 days'; }
+        else if (priority === 'P2') { limitTto = '3 days'; limitTtr = '5 days'; }
+        else { limitTto = '4 days'; limitTtr = '7 days'; }
     } else {
-        limitTto = 'Sin SLA';
-        limitTtr = 'Sin SLA';
+        limitTto = 'No SLA';
+        limitTtr = 'No SLA';
     }
     
-    const prefix = type === 'Incidencia' ? 'I-' : 'R-';
+    const prefix = type === 'Incident' ? 'I-' : 'R-';
     const newId = prefix + '00' + (1427 + AppState.tickets.length);
     
     AppState.tickets.push({
@@ -772,17 +772,17 @@ window.handleTicketSubmit = function(e) {
         title,
         type,
         priority,
-        status: 'Abierto',
-        tto: `En progreso (Límite: ${limitTto})`,
-        ttr: `En progreso (Límite: ${limitTtr})`,
-        slaStatus: 'DENTRO',
+        status: 'Open',
+        tto: `In progress (Limit: ${limitTto})`,
+        ttr: `In progress (Limit: ${limitTtr})`,
+        slaStatus: 'WITHIN',
         plan,
         limitTtrVal: limitTtr
     });
     
     AppState.slaStats.totalTickets += 1;
     
-    alert(`Ticket ${newId} registrado con prioridad ${priority}. El temporizador de SLA ha comenzado.`);
+    alert(`Ticket ${newId} registered with priority ${priority}. The SLA timer has started.`);
     renderCurrentView();
 };
 
@@ -792,34 +792,34 @@ window.resolveTicket = function(ticketId) {
     
     // Simulate resolution time
     // We let the user simulate whether it resolved on-time or delayed to show ITSM SLA calculations
-    const onTime = confirm(`¿Quieres simular que el ticket ${ticketId} se resolvió DENTRO del plazo de SLA? (Si pulsas Cancelar, se simulará un retraso para ver la compensación en la cuota)`);
+    const onTime = confirm(`Do you want to simulate that ticket ${ticketId} resolved WITHIN the SLA target?\n(Clicking Cancel will simulate a delay to show service credit calculations)`);
     
-    ticket.status = 'Resuelto';
+    ticket.status = 'Resolved';
     
     if (onTime) {
-        ticket.tto = '1 hora (SLA Cumplido)';
-        ticket.ttr = '12 horas (SLA Cumplido)';
-        ticket.slaStatus = 'DENTRO';
+        ticket.tto = '1 hour (SLA Met)';
+        ticket.ttr = '12 hours (SLA Met)';
+        ticket.slaStatus = 'WITHIN';
     } else {
-        ticket.tto = '12 horas (SLA Incumplido)';
-        ticket.ttr = '10 días (SLA Incumplido)';
-        ticket.slaStatus = 'FUERA';
+        ticket.tto = '12 hours (SLA Violated)';
+        ticket.ttr = '10 days (SLA Violated)';
+        ticket.slaStatus = 'OUT';
     }
     
     // Recalculate stats
     const total = AppState.tickets.length;
-    const resolved = AppState.tickets.filter(t => t.status === 'Resuelto');
-    const withinSla = resolved.filter(t => t.slaStatus === 'DENTRO').length;
+    const resolved = AppState.tickets.filter(t => t.status === 'Resolved');
+    const withinSla = resolved.filter(t => t.slaStatus === 'WITHIN').length;
     
     AppState.slaStats.resolvedTickets = resolved.length;
     AppState.slaStats.slaCompliance = Math.round((withinSla / resolved.length) * 100);
     
     if (AppState.slaStats.slaCompliance < 100) {
-        AppState.slaStats.activeDiscount = '10% de descuento en la siguiente factura de la clínica por incumplimiento de SLA (TTR > 30% del umbral)';
+        AppState.slaStats.activeDiscount = '10% subscription credit applied on the next invoice due to SLA violation (TTR > 30% threshold)';
     } else {
-        AppState.slaStats.activeDiscount = 'Ninguno (100% SLA cumplido)';
+        AppState.slaStats.activeDiscount = 'None (100% SLA met)';
     }
     
-    alert(`Ticket ${ticketId} marcado como Resuelto. Estado de SLA: ${ticket.slaStatus}. Descuento activo: ${AppState.slaStats.activeDiscount}`);
+    alert(`Ticket ${ticketId} marked as Resolved. SLA Status: ${ticket.slaStatus}.\nActive compensation: ${AppState.slaStats.activeDiscount}`);
     renderCurrentView();
 };
