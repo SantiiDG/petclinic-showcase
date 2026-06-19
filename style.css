@@ -1414,6 +1414,27 @@ h1, h2, h3, h4, h5, h6 {
         border-right: none;
         border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
+    
+    .architecture-visual {
+        flex-direction: column;
+    }
+    
+    .arch-flow-arrow {
+        margin: 15px 0;
+    }
+    
+    .arch-flow-arrow i {
+        transform: rotate(90deg);
+    }
+    
+    .db-schema-visual {
+        flex-direction: column;
+    }
+    
+    .db-relation-line {
+        transform: rotate(90deg);
+        margin: 10px 0;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1433,23 +1454,5 @@ h1, h2, h3, h4, h5, h6 {
     .btn {
         width: 100%;
         justify-content: center;
-    }
-    
-    .architecture-visual {
-        flex-direction: column;
-    }
-    
-    .arch-flow-arrow {
-        transform: rotate(90deg);
-        margin: 15px 0;
-    }
-    
-    .db-schema-visual {
-        flex-direction: column;
-    }
-    
-    .db-relation-line {
-        transform: rotate(90deg);
-        margin: 10px 0;
     }
 }
