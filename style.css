@@ -327,6 +327,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero-ctas {
     display: flex;
     gap: 20px;
+    justify-content: center;
 }
 
 /* --- Santiago's Contribution Block --- */
